@@ -1,0 +1,39 @@
+<?xml version="1.0"?><bot>
+  <strategy>
+    <trade_type>rise_fall</trade_type>
+    <duration>1</duration>
+    <duration_unit>seconds</duration_unit>
+    <symbol>R_25</symbol> <!-- You can change this to R_10, R_100, etc. -->
+    <stake>1</stake> <!-- Adjust stake per your balance -->
+    <payout_type>stake</payout_type>
+    <prediction></prediction>
+    <martingale_enabled>false</martingale_enabled>
+    <max_loss_trades>3</max_loss_trades>
+    <max_profit_trades>5</max_profit_trades>
+  </strategy>  <conditions>
+    <condition>
+      <type>tick_analysis</type>
+      <tick_count>3</tick_count>
+      <condition_type>consecutive_direction</condition_type>
+      <direction>up</direction>
+      <action>rise</action>
+    </condition>
+    <condition>
+      <type>tick_analysis</type>
+      <tick_count>3</tick_count>
+      <condition_type>consecutive_direction</condition_type>
+      <direction>down</direction>
+      <action>fall</action>
+    </condition>
+  </conditions><trade_filters> <filter> <type>cooldown</type> <cooldown_period>1</cooldown_period> </filter> </trade_filters>
+
+  <logic>
+    <entry>
+      <on_condition_match>true</on_condition_match>
+    </entry>
+    <stop_conditions>
+      <on_max_profit>true</on_max_profit>
+      <on_max_loss>true</on_max_loss>
+    </stop_conditions>
+  </logic>
+</bot>
